@@ -1,0 +1,30 @@
+!DOCTYPE html>
+<html>
+<head>
+  <title>BRHelpDesk Login</title>
+  <script>
+    async function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const url = `https://sheetdb.io/api/v1/8086u8xbiw5q1/search?username=${username}&password=${password}`;
+
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.length > 0) {
+        alert("Login successful!");
+        window.location.href = "dashboard.html"; // dashboard page after login
+      } else {
+        alert("Invalid login. Please try again.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>BRHelpDesk Login</h2>
+  <input type="text" id="username" placeholder="Username" /><br><br>
+  <input type="password" id="password" placeholder="Password" /><br><br>
+  <button onclick="login()">Login</button>
+</body>
+</html>
